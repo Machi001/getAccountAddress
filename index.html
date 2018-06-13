@@ -1,0 +1,59 @@
+<!doctype>
+<html>
+
+<head>
+      <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>晖时科技-生成地址</title>
+    <script type="text/javascript" src="./dist/nebulas.js"></script>
+    <script type="text/javascript">
+   
+		
+        var Account = require("nebulas").Account;
+       
+       
+        var account ;
+        function createExampleAccount() {
+            account = Account.NewAccount();
+           
+            document.getElementById('address').innerText = account.getAddressString();
+        }
+		
+        function copy()
+		{
+			var Url2=document.getElementById("address").innerText;
+			var oInput = document.createElement('input');
+			oInput.value = Url2;
+			document.body.appendChild(oInput);
+			oInput.select();  
+			document.execCommand("Copy");  
+			oInput.className = 'oInput';
+			oInput.style.display='none';
+		}
+		
+		window.onload=function(){
+		  createExampleAccount();
+		}
+		 
+    </script>
+    <style>
+        #address {
+            width: 400px;
+            height: 100px;
+			font-size:50px;
+			color:red;
+        }
+		.button{
+			height:80px;width:120px;
+		}
+    </style>
+</head> 
+<body>
+<h1>晖时科技提供</h1>
+<div>
+    <button class="button" type="button" onClick="copy();">复制地址</button>
+</div>
+ 
+<div><label id="address"></label></div>
+ 
+</body>
+</html>
